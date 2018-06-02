@@ -64,7 +64,7 @@
                                 <img src="<?php $this->options->logoUrl() ?>" alt="<?php $this->options->title() ?>" />
                                </a>
                          <?php else: ?>
-                               <a href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title() ?></a>
+                               <img src="<?php echo 'https://secure.gravatar.com/avatar/'.md5(strtolower(trim($this->author->mail))); ?>" height="32" width="32"  alt="<?php $this->options->title() ?>" />
                          <?php endif; ?>
                        </div>
                        <a href="#" class="menu" title="menu"><i class="menu-bar"></i></a>

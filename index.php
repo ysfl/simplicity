@@ -16,7 +16,17 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         <div class="container">
             <div class="row">
                 <div class="col-mb-12 col-12">
-                     <h1><?php $this->options->title() ?></h1>
+                      <a href="<?php $this->options->siteUrl(); ?>">
+                       <img id="avatar" src="
+                         <?php
+                           if ($this->options->avatarUrl){
+                             $this->options->avatarUrl();
+                           }else{
+                             echo 'https://secure.gravatar.com/avatar/'.md5(strtolower(trim($this->author->mail)));
+                           }
+                         ?>
+                       ">
+                     </a>
                      <span class="description"><?php $this->options->description() ?></span>
                 </div>
             </div>
