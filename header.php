@@ -16,7 +16,7 @@
         ), '', ' - '); ?><?php $this->options->title(); ?></title>
 
     <!-- 使用url函数转换相关路径 -->
-    <link rel="stylesheet" href="//cdnjscn.b0.upaiyun.com/libs/normalize/2.1.3/normalize.min.css">
+    <!--<link rel="stylesheet" href="//cdnjscn.b0.upaiyun.com/libs/normalize/2.1.3/normalize.min.css">-->
     <link rel="stylesheet" href="//at.alicdn.com/t/font_58ijpzch4ew89f6r.css">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('dist/css/grid.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('dist/css/style.css'); ?>">
@@ -44,7 +44,9 @@
                 <li<?php if($this->is('index')): ?> class="current"<?php endif; ?>><a href="<?php $this->options->siteUrl(); ?>"><?php _e('首页'); ?></a></li>
                   <?php $this->widget('Widget_Metas_Category_List')->to($category); ?>
                     <?php while ($category->next()): ?>
-                    <li<?php if ($this->is('post')): ?><?php if ($this->category == $category->slug): ?> class="current"<?php endif; ?><?php else: ?><?php if ($this->is('category', $category->slug)): ?> class="current"<?php endif; ?><?php endif; ?>><a href="<?php $category->permalink(); ?>" title="<?php $category->name(); ?>"><?php $category->name(); ?></a></li>
+                    <li class="current">
+                        <a href="<?php $category->permalink(); ?>" title="<?php $category->name(); ?>"><?php $category->name(); ?></a>
+                    </li>
                     <?php endwhile; ?>
                 <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
                     <?php while($pages->next()): ?>
@@ -73,10 +75,15 @@
                                     <li<?php if($this->is('page', $pages->slug)): ?> class="current"<?php endif; ?>><a href="<?php $pages->permalink(); ?>" title="<?php $pages->title(); ?>"><?php $pages->title(); ?></a></li>
                                     <?php endwhile; ?>
                                 <?php $this->widget('Widget_Metas_Category_List')->to($category); ?>
-                                <?php while ($category->next()): ?>
-                                <li<?php if ($this->is('post')): ?><?php if ($this->category == $category->slug): ?> class="current"<?php endif; ?><?php else: ?><?php if ($this->is('category', $category->slug)): ?> class="current"<?php endif; ?><?php endif; ?>><a href="<?php $category->permalink(); ?>" title="<?php $category->name(); ?>"><?php $category->name(); ?></a></li>
-                                <?php endwhile; ?>
-                            <li<?php if($this->is('index')): ?> class="current"<?php endif; ?>><a href="<?php $this->options->siteUrl(); ?>"><?php _e('首页'); ?></a></li>
+                                <?php
+                                # 后台控制是否显示分类在导航上
+                                if(!empty($this->options->enablecategory_nav)) {
+                                  while ($category->next()): ?>
+                                    <li>
+                                       <a href="<?php $category->permalink(); ?>" title="<?php $category->name(); ?>"><?php $category->name(); ?></a>
+                                     </li>
+                                   <?php endwhile; }//endif?>
+                            <li class="current"><a href="<?php $this->options->siteUrl(); ?>"><?php _e('首页'); ?></a></li>
 
                         </ul>
                    </div>
@@ -97,4 +104,3 @@
           <div id="particles-bg"></div>
         <?php endif; ?>
 <?php } ?>
-

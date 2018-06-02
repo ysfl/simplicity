@@ -1,6 +1,12 @@
 <?php
+/**
+ * 主题函数
+ * @var [type]
+ */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
+
+# 主题设置
 function themeConfig($form) {
     $logoUrl = new Typecho_Widget_Helper_Form_Element_Text('logoUrl', NULL, NULL, _t('站点 LOGO 地址'), _t('在这里填入一个图片 URL 地址, 以在网站标题前加上一个 LOGO'));
     $form->addInput($logoUrl);
@@ -20,6 +26,11 @@ function themeConfig($form) {
         array('enableParticle'), _t('是否开启背景粒子效果(默认开启)'));
 
     $form->addInput($enableParticles);
+
+    $category_nav = new Typecho_Widget_Helper_Form_Element_Checkbox('enablecategory_nav',
+      array('enablecategorynav' => _t('是')),
+      array('enablecategorynav'), _t('是否显示分类在导航上'));
+    $form->addInput($category_nav);
 }
 
 
