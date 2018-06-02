@@ -1,3 +1,4 @@
+
 InstantClick.on('change', function(){
     lazyload();
      var blocks = document.querySelectorAll('pre code');
@@ -355,7 +356,7 @@ var ajaxCommentPage = function(){
 }
 
 
-var lazyload = function(){
+function lazyload(){
    $("img.lazy").lazyload({
       load : function(){
         $(this).removeClass('lazy').addClass('lazy-loaded');
