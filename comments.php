@@ -84,7 +84,7 @@ $comments->alt(' comment-odd', ' comment-even');
     <?php $this->comments()->to($comments); ?>
     <?php if($this->allow('comment')): ?>
         <div class="comment-title">
-            <h3><?php $this->commentsNum(_t('No Comment'), _t('1 Comment'), _t('%d Comments')); ?></h3>
+            <h3><?php $this->commentsNum(_t('暂无评论'), _t('1 个评论'), _t('%d 个评论')); ?></h3>
         </div>
     <div id="<?php $this->respondId(); ?>" class="respond">
         <div id="loading"><div id="loader"><span class="loader_letter dark">L</span><span class="loader_letter dark">O</span><span class="loader_letter dark">A</span> <span class="loader_letter dark">D</span><span class="loader_letter dark">I</span><span class="loader_letter dark">N</span><span class="loader_letter dark">G</span><span class="loader_letter dark">.</span><span class="loader_letter dark">.</span><span class="loader_letter dark">.</span></div>
@@ -105,21 +105,21 @@ $comments->alt(' comment-odd', ' comment-even');
             </div>
             <?php else: ?>
             <div class="comment-inputcontent input-text">
-               <div class="comment-cover"><i class="iconfont icon-comment"></i><span>LEAVE A COMMENT</span></div>
+               <div class="comment-cover"><i class="iconfont icon-comment"></i><span>评论区</span></div>
                <textarea rows="8" cols="50" name="text" id="textarea" class="textarea" required ><?php $this->remember('text'); ?></textarea>
             </div>
             <div id="comment-input-secondary">
                 <div class="comment-name input-text">
-                    <input type="text" name="author" id="author" class="text" placeholder="Name" value="<?php $this->remember('author'); ?>" required />
+                    <input type="text" name="author" id="author" class="text" placeholder="昵称" value="<?php $this->remember('author'); ?>" required />
                 </div>
                 <div class="comment-mail input-text">
-                    <input type="email" name="mail" id="mail" class="text" placeholder="E-mail" value="<?php $this->remember('mail'); ?>"<?php if ($this->options->commentsRequireMail): ?> required<?php endif; ?> />
+                    <input type="email" name="mail" id="mail" class="text" placeholder="邮箱" value="<?php $this->remember('mail'); ?>"<?php if ($this->options->commentsRequireMail): ?> required<?php endif; ?> />
                 </div>
                 <div class="comment-url input-text">
-                    <input type="url" name="url" id="url" class="text" placeholder="Website" placeholder="<?php _e('http://'); ?>" value="<?php $this->remember('url'); ?>"<?php if ($this->options->commentsRequireURL): ?> required<?php endif; ?> />
+                    <input type="url" name="url" id="url" class="text" placeholder="个人主页" placeholder="<?php _e('http://'); ?>" value="<?php $this->remember('url'); ?>"<?php if ($this->options->commentsRequireURL): ?> required<?php endif; ?> />
                 </div>
                 <?php endif; ?>
-                <div class="comment-submit"><button type="submit" class="submit btn btn-grey submit-btn"><?php _e('SUBMIT'); ?></button></div>
+                <div class="comment-submit"><button type="submit" class="submit btn btn-grey submit-btn"><?php _e('发布'); ?></button></div>
             </div>
         </form>
     </div>
